@@ -14,7 +14,7 @@ import Configurations from './Configurations/Configurations';
 const MenuDrawer: FC<MenuDrawerPropsInterface> = (props) => {
   const { variant, sx, handleDrawerClose, open, onClose, onTransitionEnd } =
     props;
-  const { login_client_img } = useAppSelector((state) => state.constsants);
+  const { loginClientImg } = useAppSelector((state) => state.constsants);
   const isaboveSmallScreen = useAppMediaQuery('sm');
 
   const [activetab, setActivetab] = useState<number>(0);
@@ -31,7 +31,6 @@ const MenuDrawer: FC<MenuDrawerPropsInterface> = (props) => {
       sx={sx}
       open={open}>
       <div>
-
         <Toolbar>
           <div
             style={{
@@ -42,7 +41,7 @@ const MenuDrawer: FC<MenuDrawerPropsInterface> = (props) => {
               position: 'relative',
               minHeight: 'inherit',
             }}>
-            {login_client_img && (
+            {loginClientImg && (
               <div
                 style={{
                   width: !isaboveSmallScreen ? '70%' : '80%',
@@ -51,7 +50,7 @@ const MenuDrawer: FC<MenuDrawerPropsInterface> = (props) => {
                   height: 'auto',
                 }}>
                 <Image
-                  src={login_client_img}
+                  src={loginClientImg}
                   alt="Yupptv Logo"
                   priority
                   // width={160}
@@ -75,7 +74,7 @@ const MenuDrawer: FC<MenuDrawerPropsInterface> = (props) => {
         <Divider />
 
         <Portals tabIndex={activetab} handletabChange={handleChange} />
-        
+
         <Divider />
 
         <Configurations />

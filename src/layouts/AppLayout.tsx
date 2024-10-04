@@ -7,8 +7,7 @@ import DashBoardLayout from './DashboardLayout';
 import * as appSelector from '@/libs/redux/selectors';
 
 const AppLayout: FC<PropsWithChildren> = ({ children }) => {
-
-  const isLoggedin = useAppSelector(appSelector.selectisLoggedIn)
+  const isLoggedin = useAppSelector(appSelector.selectisLoggedIn);
   const router = useRouter();
   const pathname = usePathname();
 

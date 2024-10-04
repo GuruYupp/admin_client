@@ -5,7 +5,7 @@ import ListItemButton, {
 import { FC } from 'react';
 
 interface FeatureButtonProps extends ListItemButtonProps {
-  custom_isSubMenuItem?: boolean;
+  'custom-isSubMenuItem'?: boolean;
 }
 
 const shouldForwardProp = (
@@ -14,9 +14,9 @@ const shouldForwardProp = (
 
 const StyledFeatureButton = styled(ListItemButton, {
   shouldForwardProp,
-})<FeatureButtonProps>(({ theme, custom_isSubMenuItem }) => ({
+})<FeatureButtonProps>(({ theme, 'custom-isSubMenuItem': isSubMenuItem }) => ({
   '&:hover': {
-    ...(!custom_isSubMenuItem && {
+    ...(!isSubMenuItem && {
       backgroundColor: theme.palette.primary.main,
       color: '#ffffff',
     }),

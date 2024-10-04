@@ -10,17 +10,19 @@ import { useAppSelector } from '@/libs/redux/hooks';
 
 const LoginForm = () => {
   const islargeScreen = useAppMediaQuery('lg');
-  const {login_client_img} = useAppSelector((state=>state.constsants))
+  const { loginClientImg } = useAppSelector((state) => state.constsants);
   return (
     <Box className={styles.login_box_container}>
-      {login_client_img && <Image
-        src={login_client_img}
-        alt="Yupptv Logo"
-        width={175}
-        height={60}
-        priority
-        style={{ marginBottom: '60px' }}
-      />}
+      {loginClientImg && (
+        <Image
+          src={loginClientImg}
+          alt="Yupptv Logo"
+          width={175}
+          height={60}
+          priority
+          style={{ marginBottom: '60px' }}
+        />
+      )}
       <Box
         className={`${styles.login_box_form_container} ${
           !islargeScreen ? styles.responsive : ''

@@ -1,7 +1,6 @@
-import  { appConfigsInstance } from "@/appConfig";
-import { responseInterface } from "@/global.types";
-import { axiosAPIS } from "@/libs/axios/axios";
-
+import { appConfigsInstance } from '@/appConfig';
+import { responseInterface } from '@/global.types';
+import { axiosAPIS } from '@/libs/axios/axios';
 
 export async function getData(
   url: string,
@@ -20,7 +19,7 @@ export async function getData(
 
 export async function postData<T>(url: string, PostData: T) {
   const headers = {};
-  const data = axiosAPIS.post({url,headers},PostData)
+  const data = axiosAPIS.post({ url, headers }, PostData);
   return data;
 }
 
@@ -30,11 +29,13 @@ export async function postFormData<T>(url: string, PostData: T) {
   return data;
 }
 
-export async function makeLogin<T>(url:string,PostData:T){
-    const headers={
-        "tenant-code":appConfigsInstance.Config.tenant
-    }
-    const data:responseInterface = await axiosAPIS.post({ url, headers }, PostData);
-    return data;
+export async function makeLogin<T>(url: string, PostData: T) {
+  const headers = {
+    'tenant-code': appConfigsInstance.Config.tenant,
+  };
+  const data: responseInterface = await axiosAPIS.post(
+    { url, headers },
+    PostData,
+  );
+  return data;
 }
-

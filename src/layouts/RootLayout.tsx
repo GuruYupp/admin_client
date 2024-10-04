@@ -13,7 +13,7 @@ const RootLayout: FC<PropsWithChildren> = (props) => {
   useEffect(() => {
     let unmounted = false;
     if (unmounted) return;
-    setAppConfigsAfterRender()
+    setAppConfigsAfterRender();
     dispatch(setAdminConstants(appConfigsInstance.Config.tenant));
     dispatch(loginVerify());
     setisLoading(false);

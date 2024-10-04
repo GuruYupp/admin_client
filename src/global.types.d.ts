@@ -50,16 +50,14 @@ export interface adminLoginUserDetailsInterface {
   userName: string;
 }
 
-
-
 const portalEnums = {
-    Content: 'content',
-    Subscriber: 'subscriber',
-    SiteConfig: 'site_config',
-    Reports: 'reports',
-    Analytics: 'analytics'
+  Content: 'content',
+  Subscriber: 'subscriber',
+  SiteConfig: 'site_config',
+  Reports: 'reports',
+  Analytics: 'analytics',
 } as const;
-type portalType = typeof portalEnums[keyof typeof portalEnums];
+type portalType = (typeof portalEnums)[keyof typeof portalEnums];
 type portalsType = {
   [key in portalType]: {
     code: portalType;
@@ -67,28 +65,26 @@ type portalsType = {
   };
 };
 
-
 const featuresEnum = {
-    Banners: 'banners',
-    TvGenres: 'tv_genres',
-    Categories: 'categories',
-    GeoRule: 'geo_rule',
-    Languages: 'languages',
-    Localization: 'localization',
-    ContentPartner:'content_partner',
-    ContentChannels:'content_channels',
-    TvChannels:'tv_channels',
-    Webseries:'webseries',
-    Videos:'videos',
-    Movie:'movie',
-    PendingChannels:'content_channels',
-    TVChannelChanges:'tv_channel_changes',
-    BulkUploadContent:'bulk_upload_content',
-    BulkUploadEPG:'bulk_upload_epg',
-
+  Banners: 'banners',
+  TvGenres: 'tv_genres',
+  Categories: 'categories',
+  GeoRule: 'geo_rule',
+  Languages: 'languages',
+  Localization: 'localization',
+  ContentPartner: 'content_partner',
+  ContentChannels: 'content_channels',
+  TvChannels: 'tv_channels',
+  Webseries: 'webseries',
+  Videos: 'videos',
+  Movie: 'movie',
+  PendingChannels: 'content_channels',
+  TVChannelChanges: 'tv_channel_changes',
+  BulkUploadContent: 'bulk_upload_content',
+  BulkUploadEPG: 'bulk_upload_epg',
 } as const;
 
-type featureType = typeof featuresEnum[keyof typeof featuresEnum];;
+type featureType = (typeof featuresEnum)[keyof typeof featuresEnum];
 
 type featuresType = {
   [key in featureType]: {
@@ -99,22 +95,21 @@ type featuresType = {
   };
 };
 
-
-
 const configurationEnum = {
-    PlatformOperations: 'platform_operations',
-    ContentManagement: 'content_management',
-    SocialConnect: 'social_connect',
-    CustomData: 'custom_data',
-    PartnerIntegrations: 'partner_integrations',
-    AdminUsersAndLogs: 'admin_users_logs',
-    SubscribersManagement:'subscribers_management',
-    ReportersManagement:'reporters_management',
-    ChatManagement:'chat_management',
-    QRCodeGeneration:'qr_code_generation'
+  PlatformOperations: 'platform_operations',
+  ContentManagement: 'content_management',
+  SocialConnect: 'social_connect',
+  CustomData: 'custom_data',
+  PartnerIntegrations: 'partner_integrations',
+  AdminUsersAndLogs: 'admin_users_logs',
+  // SubscribersManagement:'subscribers_management',
+  // ReportersManagement:'reporters_management',
+  // ChatManagement:'chat_management',
+  // QRCodeGeneration:'qr_code_generation'
 } as const;
 
-type configurationType = typeof configurationEnum[keyof typeof configurationEnum];
+type configurationType =
+  (typeof configurationEnum)[keyof typeof configurationEnum];
 
 type configurationsType = {
   [key in configurationType]: {
@@ -123,6 +118,3 @@ type configurationsType = {
     portal_code: portalType;
   };
 };
-
-
-
