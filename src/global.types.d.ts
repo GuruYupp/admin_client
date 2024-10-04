@@ -82,6 +82,16 @@ const featuresEnum = {
   TVChannelChanges: 'tv_channel_changes',
   BulkUploadContent: 'bulk_upload_content',
   BulkUploadEPG: 'bulk_upload_epg',
+  Subscribers: 'subscribers',
+  WebuserCreation: 'webuser_creation',
+  ContentFeedback: 'content_feedback',
+  PackageActivation: 'package_activation',
+  PaytmManage: 'paytm_manage',
+  BulkEmail: 'bulk_email',
+  MigrateUser: 'migrate_user',
+  ReportersManage: 'reporters_manage',
+  chatMonitoring: 'chat_monitoring',
+  Qrcode: 'qrcode',
 } as const;
 
 type featureType = (typeof featuresEnum)[keyof typeof featuresEnum];
@@ -102,10 +112,10 @@ const configurationEnum = {
   CustomData: 'custom_data',
   PartnerIntegrations: 'partner_integrations',
   AdminUsersAndLogs: 'admin_users_logs',
-  // SubscribersManagement:'subscribers_management',
-  // ReportersManagement:'reporters_management',
-  // ChatManagement:'chat_management',
-  // QRCodeGeneration:'qr_code_generation'
+  SubscribersManagement: 'subscribers_management',
+  ReportersManagement: 'reporters_management',
+  ChatManagement: 'chat_management',
+  QRCodeGeneration: 'qr_code_generation',
 } as const;
 
 type configurationType =
