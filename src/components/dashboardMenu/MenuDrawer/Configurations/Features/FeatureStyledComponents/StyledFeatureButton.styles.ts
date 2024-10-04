@@ -1,0 +1,26 @@
+import { styled } from '@mui/material';
+import ListItemButton, {
+  ListItemButtonProps,
+} from '@mui/material/ListItemButton';
+import { FC } from 'react';
+
+interface FeatureButtonProps extends ListItemButtonProps {
+  custom_isSubMenuItem?: boolean;
+}
+
+const shouldForwardProp = (
+  prop: FeatureButtonProps[keyof FeatureButtonProps],
+) => !prop.startsWith('custom');
+
+const StyledFeatureButton = styled(ListItemButton, {
+  shouldForwardProp,
+})<FeatureButtonProps>(({ theme, custom_isSubMenuItem }) => ({
+  '&:hover': {
+    ...(!custom_isSubMenuItem && {
+      backgroundColor: theme.palette.primary.main,
+      color: '#ffffff',
+    }),
+  },
+})) as FC<FeatureButtonProps>;
+
+export default StyledFeatureButton;

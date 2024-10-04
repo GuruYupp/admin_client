@@ -1,0 +1,33 @@
+.login_box_container {
+  flex: 1;
+  padding-top: 3.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 500px;
+
+  .login_box_form_container {
+    width: 100%;
+    padding: 0px 6rem;
+    margin-bottom: 10%;
+
+    &.responsive {
+      padding: 0px 3.6rem;
+    }
+
+    .login_heading {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      text-transform: uppercase;
+      color: #514d6a;
+      line-height: 1.1;
+    }
+  }
+
+  .copy_rights_text {
+    margin-bottom: 5%;
+    font-size: 0.9rem;
+    color: #514d6a;
+  }
+}

@@ -1,0 +1,30 @@
+.form_inner_container {
+  .input_form_control {
+    width: 100%;
+    padding: 7px 0px;
+  }
+
+  .bottom_form_group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+
+    .forgot_link {
+      font-size: 15px;
+    }
+  }
+
+  .err_message{
+    text-align: center;
+    color: red;
+    margin-top: 0.5rem;
+  }
+
+  .submit_form_control {
+    margin-top: 2rem;
+    justify-content: center;
+    flex-direction: row;
+    display: flex;
+  }
+}
