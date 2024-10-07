@@ -5,6 +5,7 @@ import StyledFeatureText from './FeatureStyledComponents/StyledFeatureText.style
 import StyledFeatureButton from './FeatureStyledComponents/StyledFeatureButton.styles';
 import StyledFeatureList from './FeatureStyledComponents/StyledFeatureList.styles';
 import { FeaturesPropsInterface } from '@/components/dashboardMenu/dashboardmenu.types';
+import Link from 'next/link';
 
 const Features: FC<FeaturesPropsInterface> = (props) => {
   const { open, handleClick, panelIndex } = props;
@@ -17,7 +18,9 @@ const Features: FC<FeaturesPropsInterface> = (props) => {
       <Collapse in={open} timeout="auto" unmountOnExit>
         <StyledFeatureList component="div" disablePadding>
           <StyledFeatureButton sx={{ pl: 4 }} custom-isSubMenuItem>
-            <StyledFeatureText primary="Starred" />
+            <Link href={`/platform-config/banners`} shallow>
+              <StyledFeatureText primary="Starred" />
+            </Link>
           </StyledFeatureButton>
         </StyledFeatureList>
       </Collapse>

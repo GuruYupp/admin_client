@@ -21,6 +21,10 @@ const StyledFeatureButton = styled(ListItemButton, {
       color: '#ffffff',
     }),
   },
+  '& a': {
+    textDecoration: 'none',
+    color: 'inherit',
+  },
 })) as FC<FeatureButtonProps>;
 
 export default StyledFeatureButton;
