@@ -38,10 +38,15 @@ export interface adminLoginUserPortal {
   code: string;
 }
 
+export interface adminLoginUserFeature {
+  name: string;
+  code: string;
+}
+
 export interface adminLoginUserDetailsInterface {
   emailId: string;
   portals: adminLoginUserPortal[]; // Specify a more detailed type if known
-  features: adminLoginUserPortal[]; // Specify a more detailed type if known
+  features: adminLoginUserFeature[]; // Specify a more detailed type if known
   permissions: any[]; // Specify a more detailed type if known
   roles: adminLoginUserRole[];
   status: boolean;
@@ -62,6 +67,7 @@ type portalsType = {
   [key in portalType]: {
     code: portalType;
     text: string;
+    shouldDisplay: boolean;
   };
 };
 
@@ -83,11 +89,11 @@ const featuresEnum = {
   Webseries: 'webseries',
   Videos: 'videos',
   Movie: 'movie',
-  PendingChannels: 'content_channels',
+  PendingChannels: 'pending_channels',
   TVChannelChanges: 'tv_channel_changes',
   BulkUploadContent: 'bulk_upload_content',
   BulkUploadEPG: 'bulk_upload_epg',
-  EncodedStreams: 'Encoded_Streams',
+  EncodedStreams: 'content_upload',
   ArtistRole: 'artist_role',
   Artist: 'artist',
 
@@ -194,6 +200,7 @@ const featuresEnum = {
   //packages
   MasterPackages: 'master_packages',
   Packages: 'packages',
+  CheddarPackages: 'cheddar_packages',
   PaymentGateway: 'payment_gateway',
   PackageDiscount: 'package_discount',
   PackageFeatures: 'package_features',
@@ -216,6 +223,22 @@ const featuresEnum = {
   MiscTables: 'misc_tables',
 
   /* Platform configurations portal ends */
+
+  /* Support Operations portal starts */
+  Subscribers: 'subscribers',
+  WebuserCreation: 'webuser_creation',
+  ContentFeedback: 'content_feedback',
+  PackageActivation: 'package_activation',
+  PaytmManage: 'paytm_manage',
+  BulkEmail: 'bulk_email',
+  MigrateUser: 'migrate_user',
+  ReportersManage: 'reporters_manage',
+  chatMonitoring: 'chat_monitoring',
+  ChatHistory: 'chat_history',
+  BlockedUsers: 'blocked_users',
+  ChatUsers: 'chat_users',
+  Qrcode: 'qrcode',
+  /* Support Operations portal ends */
 } as const;
 
 type featureType = (typeof featuresEnum)[keyof typeof featuresEnum];
@@ -226,6 +249,7 @@ type featuresType = {
     text: string;
     configuration_code: configurationType;
     portal_code: portalType;
+    shouldDisplay: boolean;
   };
 };
 
@@ -236,13 +260,10 @@ const configurationEnum = {
   CustomData: 'custom_data',
   PartnerIntegrations: 'partner_integrations',
   AdminUsersAndLogs: 'admin_users_logs',
-  // SubscribersManagement:'subscribers_management',
-  // ReportersManagement:'reporters_management',
-  // ChatManagement:'chat_management',
-  // QRCodeGeneration:'qr_code_generation'
+
   MetaData: 'meta_data',
   MetaTable: 'meta_table',
-  Configurations: 'configutations',
+  Configurations: 'configurations',
   Vouchers: 'vouchers',
   AdConfiguration: 'ad_configuration',
   Seo: 'seo',
@@ -250,6 +271,12 @@ const configurationEnum = {
   Packages: 'packages',
   Misc: 'misc',
   MiscOperations: 'misc_operations',
+  MiscTables: 'misc_tables',
+
+  SubscribersManagement: 'subscribers_management',
+  ReportersManagement: 'reporters_management',
+  ChatManagement: 'chat_management',
+  QRCodeGeneration: 'qr_code_generation',
 } as const;
 
 type configurationType =
@@ -260,5 +287,7 @@ type configurationsType = {
     code: configurationType;
     text: string;
     portal_code: portalType;
+    feature_codes: featureType[];
+    shouldDisplay: boolean;
   };
 };

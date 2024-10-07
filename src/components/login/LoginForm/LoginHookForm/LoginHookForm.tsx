@@ -11,57 +11,64 @@ import styles from './LoginHookForm.module.scss';
 import { LoginFormInterface } from './LoginHookFormtypes';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { DevTool } from '@hookform/devtools';
-import { appConfigsInstance } from '@/appConfig';
+import { appConfigsInstance, setAppConfigsAfterRender } from '@/appConfig';
 import { setAdminConstants } from '@/libs/redux/features/constants/constsSlice';
 import { useAppDispatch } from '@/libs/redux/hooks';
-import { adminLoginUserDetailsInterface, validClientType } from '@/global.types';
+import {
+  adminLoginUserDetailsInterface,
+  validClientType,
+} from '@/global.types';
 import { makeLogin } from '@/services/datamanager';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { UserLoginData } from '@/libs/redux/features/auth/authSlice';
+import {
+  UserLoginData,
+  loginVerify,
+} from '@/libs/redux/features/auth/authSlice';
 import { saveToLocalStorage } from '@/services/utils';
-
+import { setPortals } from '@/libs/redux/features/portals/portalsSlice';
 
 const LoginHookForm = () => {
   const { handleSubmit, control } = useForm<LoginFormInterface>();
   const dispatch = useAppDispatch();
-  const [loginerror,setLoginError] = useState<string>();
-  const router = useRouter()
+  const [loginerror, setLoginError] = useState<string>();
+  const router = useRouter();
 
   const onSubmit: SubmitHandler<LoginFormInterface> = async (data) => {
-
-    try{
-    const postData:Partial<LoginFormInterface> = {...data}
-    console.log(postData)
-    delete postData.rememberme;
-    if(postData.client){
-      appConfigsInstance.updateConfigs(postData.client as validClientType)
-      dispatch(setAdminConstants(postData.client as validClientType))
-    }
-    const loginResponse = await makeLogin(`service/admin/v1/login`,postData)
-    if(loginResponse.status === false){
-      if(loginResponse.error){
-        if(loginResponse.error.code === 404){
-          setLoginError(loginResponse.error.type);
-        }
-        else{
-          setLoginError(loginResponse.error.message);
-        }
-        
+    try {
+      const postData: Partial<LoginFormInterface> = { ...data };
+      console.log(postData);
+      delete postData.rememberme;
+      if (postData.client) {
+        appConfigsInstance.updateConfigs(postData.client as validClientType);
+        dispatch(setAdminConstants(postData.client as validClientType));
       }
-      else{
-        setLoginError("Something went wrong");
+      const loginResponse = await makeLogin(`service/admin/v1/login`, postData);
+      if (loginResponse.status === false) {
+        if (loginResponse.error) {
+          if (loginResponse.error.code === 404) {
+            setLoginError(loginResponse.error.type);
+          } else {
+            setLoginError(loginResponse.error.message);
+          }
+        } else {
+          setLoginError('Something went wrong');
+        }
+      } else if (loginResponse.status) {
+        saveToLocalStorage('tenant', postData.client as string);
+        dispatch(
+          UserLoginData(
+            loginResponse.response as adminLoginUserDetailsInterface,
+          ),
+        );
+        setAppConfigsAfterRender();
+        dispatch(loginVerify());
+        dispatch(setPortals());
+        router.replace('/');
       }
+    } catch (err) {
+      console.log(err);
     }
-    else if(loginResponse.status){
-      saveToLocalStorage("tenant",postData.client as string);
-      dispatch(UserLoginData(loginResponse.response as adminLoginUserDetailsInterface))
-      router.replace("/")
-    }
-  }
-  catch(err){
-    console.log(err)
-  }
   };
 
   return (
