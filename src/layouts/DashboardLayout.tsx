@@ -37,9 +37,10 @@ const DashBoardLayout: FC<PropsWithChildren> = (props) => {
         component="main"
         sx={{
           flexGrow: 1,
-          p: 2.5,
+          p: 1.8,
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           height: '100%',
+          backgroundColor: '#eceff4',
         }}>
         <Toolbar />
 

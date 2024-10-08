@@ -5,6 +5,7 @@ import {
   validClientType,
 } from '@/global.types';
 import adminConstants from '@/configs/admin-constants/admin-constants';
+import { appConfigsInstance } from '@/appConfig';
 
 export const getHeaders = () => {};
 
@@ -1061,4 +1062,10 @@ export const getAllConfigurations = () => {
 
   /*eslint-enable camelcase */
   return configurations;
+};
+
+export const getTenantCode = () => appConfigsInstance.Config.tenant;
+export const getSessionId = () => {
+  const userDetails = JSON.parse(readFromLocalStorage('userDetails') || '{}');
+  return userDetails.sessionId;
 };

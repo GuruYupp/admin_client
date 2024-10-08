@@ -25,6 +25,13 @@ export interface responseInterface {
     type: string;
     details: { [key: string]: string };
   };
+  response?: {
+    data: unknown;
+  };
+}
+
+export interface loginresponseInterface
+  extends Omit<responseInterface, 'response'> {
   response: unknown;
 }
 

@@ -20,7 +20,7 @@ import SearchIconWrapper from './DashBoardHeaderStyles/SearchIconWrapper.styles'
 import StyledInputBase from './DashBoardHeaderStyles/StyledInputBase.styles';
 import { FC, MouseEvent, useState } from 'react';
 import { DashBoardHeadrPropsInterface } from './dashboardheader.types';
-import * as appSelector from '@/libs/redux/selectors'
+import * as appSelector from '@/libs/redux/selectors';
 
 const settings = [
   { text: 'My Profile', icon: <PersonIcon /> },
@@ -28,7 +28,7 @@ const settings = [
 ];
 
 const DashBoardHeader: FC<DashBoardHeadrPropsInterface> = (props) => {
-  const { drawerWidth ,handleDrawerToggle} = props;
+  const { drawerWidth, handleDrawerToggle } = props;
 
   const userDetails = useAppSelector(appSelector.selectuserDetails);
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
@@ -77,7 +77,13 @@ const DashBoardHeader: FC<DashBoardHeadrPropsInterface> = (props) => {
         <Box sx={{ flexGrow: 0 }}>
           <Tooltip title="Open settings">
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              <Avatar sx={{ bgcolor: '#d24667' }}>
+              <Avatar
+                sx={{
+                  bgcolor: '#d24667',
+                  height: 30,
+                  width: 30,
+                  fontSize: '1rem',
+                }}>
                 {userDetails?.userName[0].toUpperCase()}
               </Avatar>
             </IconButton>
