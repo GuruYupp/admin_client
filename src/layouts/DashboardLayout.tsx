@@ -19,7 +19,7 @@ const DashBoardLayout: FC<PropsWithChildren> = (props) => {
   };
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex', height: '100vh' }}>
       <CssBaseline />
 
       <DashBoardHeader
@@ -37,8 +37,10 @@ const DashBoardLayout: FC<PropsWithChildren> = (props) => {
         component="main"
         sx={{
           flexGrow: 1,
-          p: 3,
+          p: 1.8,
           width: { sm: `calc(100% - ${drawerWidth}px)` },
+          height: '100%',
+          backgroundColor: '#eceff4',
         }}>
         <Toolbar />
 

@@ -1,5 +1,5 @@
 import { appConfigsInstance } from '@/appConfig';
-import { responseInterface } from '@/global.types';
+import { loginresponseInterface } from '@/global.types';
 import { axiosAPIS } from '@/libs/axios/axios';
 
 export async function getData(
@@ -33,7 +33,7 @@ export async function makeLogin<T>(url: string, PostData: T) {
   const headers = {
     'tenant-code': appConfigsInstance.Config.tenant,
   };
-  const data: responseInterface = await axiosAPIS.post(
+  const data: loginresponseInterface = await axiosAPIS.post(
     { url, headers },
     PostData,
   );

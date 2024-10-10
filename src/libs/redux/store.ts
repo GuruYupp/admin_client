@@ -2,16 +2,26 @@ import { configureStore } from '@reduxjs/toolkit';
 import authSlice from './features/auth/authSlice';
 import { adminApis } from '@/libs/redux/apis/adminApis';
 import constsSlice from './features/constants/constsSlice';
+import portalsSlice from './features/portals/portalsSlice';
+import { platformConfigadminApis } from './apis/platformConfigadminApis';
+import manageBannersSlice from './features/paltformConfigs/ManageBannersSlice';
 
 export const makeStore = () => {
   const Store = configureStore({
     reducer: {
       authState: authSlice,
-      constsants:constsSlice,
-      [adminApis.reducerPath]:adminApis.reducer
+      constsants: constsSlice,
+      portals: portalsSlice,
+      platformConfigManageBanners: manageBannersSlice,
+      [adminApis.reducerPath]: adminApis.reducer,
+      [platformConfigadminApis.reducerPath]: platformConfigadminApis.reducer,
     },
-    middleware:(getDefalutMiddelware)=>getDefalutMiddelware().concat(adminApis.middleware)
-  })
+    middleware: (getDefalutMiddelware) =>
+      getDefalutMiddelware().concat(
+        adminApis.middleware,
+        platformConfigadminApis.middleware,
+      ),
+  });
   return Store;
 };
 

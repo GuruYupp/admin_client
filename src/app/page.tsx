@@ -1,13 +1,16 @@
 import dynamic from 'next/dynamic';
 
-const LazyCounter = dynamic(() => import('@/components/Counter'), {
-  ssr: false,
-});
+const LazyDashboardDefalutPage = dynamic(
+  () => import('@/pages/DashboardDefalutPage'),
+  {
+    ssr: false,
+  },
+);
 
 export default function Home() {
   return (
     <>
-      <LazyCounter />
+      <LazyDashboardDefalutPage />
     </>
   );
 }
