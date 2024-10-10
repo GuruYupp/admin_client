@@ -4,18 +4,13 @@ import { FC } from 'react';
 import { DashboardMenuPropsInterface } from './dashboardmenu.types';
 
 const DashboardMenu: FC<DashboardMenuPropsInterface> = (props) => {
-  const {
-    drawerWidth,
-    mobileOpen,
-    handleDrawerClose,
-  } = props;
+  const { drawerWidth, mobileOpen, handleDrawerClose } = props;
 
   return (
     <Box
       component="nav"
-      sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+      sx={{ width: { md: drawerWidth }, flexShrink: { md: 0 } }}
       aria-label="mailbox folders">
-
       <MenuDrawer
         drawerWidth={drawerWidth}
         handleDrawerClose={handleDrawerClose}
@@ -26,7 +21,7 @@ const DashboardMenu: FC<DashboardMenuPropsInterface> = (props) => {
           keepMounted: true, // Better open performance on mobile.
         }}
         sx={{
-          display: { xs: 'block', sm: 'none' },
+          display: { xs: 'block', md: 'none' },
           '& .MuiDrawer-paper': {
             boxSizing: 'border-box',
             width: drawerWidth,
@@ -39,7 +34,7 @@ const DashboardMenu: FC<DashboardMenuPropsInterface> = (props) => {
         variant="permanent"
         open
         sx={{
-          display: { xs: 'none', sm: 'block' },
+          display: { xs: 'none', md: 'block' },
           '& .MuiDrawer-paper': {
             boxSizing: 'border-box',
             width: drawerWidth,

@@ -15,7 +15,7 @@ const MenuDrawer: FC<MenuDrawerPropsInterface> = (props) => {
   const { variant, sx, handleDrawerClose, open, onClose, onTransitionEnd } =
     props;
   const { loginClientImg } = useAppSelector((state) => state.constsants);
-  const isaboveSmallScreen = useAppMediaQuery('sm');
+  const isaboveSmallScreen = useAppMediaQuery('md');
 
   const [activetab, setActivetab] = useState<number>(0);
 
