@@ -22,14 +22,17 @@ const ManageBannersForm = styled('div')(({ theme }) => ({
       [theme.breakpoints.between('md', 'xl')]: {
         flex: '0 0 25%',
         maxWidth: '25%',
+        width: '25%',
       },
       [theme.breakpoints.between('sm', 'md')]: {
         flex: '0 0 50%',
         maxWidth: '50%',
+        width: '50%',
       },
       [theme.breakpoints.down('sm')]: {
         flex: '0 0 100%',
         maxWidth: '100%',
+        width: '100%',
       },
     },
   },

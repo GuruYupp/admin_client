@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { platformConfigadminApis } from '../../apis/platformConfigadminApis';
+import { responseInterface } from '@/global.types';
 
 interface WhoColumns {
   createdBy: string;
@@ -42,7 +43,7 @@ export const fetchBanners = createAsyncThunk(
         body: { networkId: '' },
       }),
     );
-    return result.data;
+    return result.data as responseInterface;
   },
 );
 
