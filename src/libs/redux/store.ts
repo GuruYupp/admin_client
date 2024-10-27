@@ -4,7 +4,8 @@ import { adminApis } from '@/libs/redux/apis/adminApis';
 import constsSlice from './features/constants/constsSlice';
 import portalsSlice from './features/portals/portalsSlice';
 import { platformConfigadminApis } from './apis/platformConfigadminApis';
-import manageBannersSlice from './features/paltformConfigs/ManageBannersSlice';
+import ManageBannersSlice from './features/paltformConfigs/ManageBannersSlice';
+import CommonConfigsSlice from './features/commonConfigs/CommonConfigsSlice';
 
 export const makeStore = () => {
   const Store = configureStore({
@@ -12,7 +13,8 @@ export const makeStore = () => {
       authState: authSlice,
       constsants: constsSlice,
       portals: portalsSlice,
-      platformConfigManageBanners: manageBannersSlice,
+      platformConfigManageBanners: ManageBannersSlice,
+      commonConfigs: CommonConfigsSlice,
       [adminApis.reducerPath]: adminApis.reducer,
       [platformConfigadminApis.reducerPath]: platformConfigadminApis.reducer,
     },

@@ -19,7 +19,7 @@ const DashBoardLayout: FC<PropsWithChildren> = (props) => {
   };
 
   return (
-    <Box sx={{ display: 'flex', height: '100vh' }}>
+    <Box sx={{ display: 'flex', height: '100vh', backgroundColor: '#eceff4' }}>
       <CssBaseline />
 
       <DashBoardHeader

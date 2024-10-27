@@ -1,11 +1,11 @@
 import AppTextField from '@/components/shared/AppTextField/AppTextField';
 import { styled } from '@mui/material';
-import MenuItem from '@mui/material/MenuItem';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Button from '@mui/material/Button';
 import React, { useEffect } from 'react';
 import { useAppDispatch } from '@/libs/redux/hooks';
 import { fetchBanners } from '@/libs/redux/features/paltformConfigs/ManageBannersSlice';
+import ManageBannersSelect from './ManageBannersSelect';
+import ManageBannersList from './ManageBannersList';
 
 const ManageBannersForm = styled('div')(({ theme }) => ({
   '& form': {
@@ -52,19 +52,7 @@ const ManageBannersSearchButton = styled(Button)(({}) => ({
   marginLeft: '10px',
 }));
 
-const ManageBannersSelect = styled(Select)(() => ({
-  Width: '100%',
-  display: 'block',
-  height: '35px',
-})) as unknown as typeof Select;
-
 const ManageBanners = () => {
-  const [age, setAge] = React.useState('10');
-
-  const handleChange = (event: SelectChangeEvent) => {
-    setAge(event.target.value as string);
-  };
-
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -72,22 +60,13 @@ const ManageBanners = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <div style={{ paddingBottom: '30px' }}>
       <ManageBannersForm>
         <form>
           <label htmlFor="content partner">
             {' '}
             <strong>Contet Partner</strong>
-            <ManageBannersSelect
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              value={age}
-              onChange={handleChange}
-              size="small">
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
-            </ManageBannersSelect>
+            <ManageBannersSelect />
           </label>
           <label htmlFor="Banner Id">
             {' '}
@@ -106,6 +85,7 @@ const ManageBanners = () => {
           {/* </label> */}
         </form>
       </ManageBannersForm>
+      <ManageBannersList />
     </div>
   );
 };

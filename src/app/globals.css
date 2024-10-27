@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import '~ag-grid-community/styles/ag-grid.min.css';
+@import '~ag-grid-community/styles/ag-theme-quartz.min.css';
 
 * {
   margin: 0;
@@ -7,9 +9,16 @@
   font-family: 'Roboto', sans-serif;
 }
 
+.ag-theme-quartz {
+  --ag-wrapper-border-radius: 0px !important;
+  overflow-x: auto; /* Enables horizontal scrolling */
+  width: 100%; /* Adjust as needed */
+}
+
 body {
   overflow-y: scroll;
   min-height: 100vh;
+  background-color: '#eceff4';
 }
 
 .roboto-thin {

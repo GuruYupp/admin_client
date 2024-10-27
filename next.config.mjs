@@ -9,6 +9,13 @@ const nextConfig = {
             port: '',
             pathname: '/ottadmin/images/**',
           },
+          //"d229kpbsb5jevy.cloudfront.net"
+          {
+            protocol: 'https',
+            hostname: 'd229kpbsb5jevy.cloudfront.net',
+            port: '',
+            pathname: '**',
+          },
         ],
       },
 };

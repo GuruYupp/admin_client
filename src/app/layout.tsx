@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 import './globals.css';
+
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import theme from '@/theme';
 import dynamic from 'next/dynamic';
