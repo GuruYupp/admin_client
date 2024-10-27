@@ -20,6 +20,9 @@ const theme = createTheme({
     secondary: {
       main: '#ffffff',
     },
+    background: {
+      default: '#eceff4',
+    },
   },
   breakpoints: {
     values: {

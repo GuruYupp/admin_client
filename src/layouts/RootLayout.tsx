@@ -2,6 +2,7 @@
 
 import { appConfigsInstance, setAppConfigsAfterRender } from '@/appConfig';
 import { loginVerify } from '@/libs/redux/features/auth/authSlice';
+import { fetchResourceProfiles } from '@/libs/redux/features/commonConfigs/CommonConfigsSlice';
 import { setAdminConstants } from '@/libs/redux/features/constants/constsSlice';
 import { setPortals } from '@/libs/redux/features/portals/portalsSlice';
 import { useAppDispatch } from '@/libs/redux/hooks';
@@ -17,6 +18,7 @@ const RootLayout: FC<PropsWithChildren> = (props) => {
     setAppConfigsAfterRender();
     dispatch(setAdminConstants(appConfigsInstance.Config.tenant));
     dispatch(loginVerify());
+    dispatch(fetchResourceProfiles());
     dispatch(setPortals());
     setisLoading(false);
     return () => {

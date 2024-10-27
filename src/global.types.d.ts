@@ -27,6 +27,7 @@ export interface responseInterface {
   };
   response?: {
     data: unknown;
+    profiles?: unknown;
   };
 }
 
@@ -298,3 +299,22 @@ type configurationsType = {
     shouldDisplay: boolean;
   };
 };
+
+interface WhoColumnsInterface {
+  createdBy: string;
+  createdDate: number; // Assuming this is a timestamp
+  lastUpdatedBy: string;
+  lastUpdatedDate: number; // Assuming this is a timestamp
+}
+
+interface ResourceProfileInterface {
+  // profiles: {
+  name: string;
+  code: string;
+  urlPrefix: string;
+  targetParams: {
+    deviceName: string;
+    target: string;
+  }[];
+  // };
+}

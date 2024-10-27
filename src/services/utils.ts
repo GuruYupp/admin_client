@@ -9,8 +9,13 @@ import { appConfigsInstance } from '@/appConfig';
 
 export const getHeaders = () => {};
 
-export const getadminConstants = async (client?: validClientType) => {
-  const tenantConstants = await adminConstants.getConstants(client);
+export const getadminAsyncConstants = async (client?: validClientType) => {
+  const tenantConstants = await adminConstants.getAsyncConstants(client);
+  return tenantConstants;
+};
+
+export const getadminSyncConstants = (client?: validClientType) => {
+  const tenantConstants = adminConstants.getSyncConstants(client);
   return tenantConstants;
 };
 
@@ -1211,4 +1216,40 @@ export const getTenantCode = () => appConfigsInstance.Config.tenant;
 export const getSessionId = () => {
   const userDetails = JSON.parse(readFromLocalStorage('userDetails') || '{}');
   return userDetails.sessionId;
+};
+
+export const getProfile = (resource?: string) => {
+  const resourceProfilesStr = readFromLocalStorage('resourceProfiles');
+  let resourceProfiles = [];
+  if (!!resourceProfilesStr) {
+    resourceProfiles = JSON.parse(resourceProfilesStr)?.data;
+  }
+  if (!!resource) {
+    for (const re of resourceProfiles) {
+      if (resource == re.code) {
+        return re.urlPrefix;
+      }
+    }
+  } else {
+    for (const re of resourceProfiles) {
+      if (re.isDefault) {
+        return re.urlPrefix;
+      }
+    }
+  }
+};
+
+export const getImage = (image: string): string => {
+  const constants = getadminSyncConstants();
+  if (image == undefined) {
+    return constants.noImagePath;
+  } else if (image.indexOf('http') == 0 || image.indexOf('https') == 0) {
+    return image;
+  } else if (image.split(',').length == 2) {
+    const arr = image.split(',');
+    const profile = getProfile(arr[0]);
+    return profile + arr[1];
+  } else {
+    return getProfile() + image;
+  }
 };
