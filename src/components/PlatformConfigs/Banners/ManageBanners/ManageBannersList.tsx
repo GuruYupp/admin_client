@@ -7,9 +7,12 @@ import { ColDef } from 'ag-grid-community';
 import React, { useEffect, useState } from 'react';
 import ContentPartner from './cells/ContentPartner';
 import BannerImage from './cells/BannerImage';
+import TargetUrl from './cells/TargetUrl';
+// import styles from './ManageBannersList.module.scss'
 // Create new GridExample component
 const ManageBannersList = () => {
   const Banners = useAppSelector(selectManageBanners);
+  const rowHeight: number = 100;
 
   const columnDefs2: ColDef[] = [
     {
@@ -36,7 +39,11 @@ const ManageBannersList = () => {
     {
       field: 'targetPath',
       headerName: 'Target Url',
-      cellStyle: { textAlign: 'left', lineHeight: '100px' },
+      cellStyle: { textAlign: 'left', lineHeight: '1', height: '100%' },
+      // cellClass:styles.targeturl_block,
+      wrapText: true,
+      autoHeight: true,
+      cellRenderer: TargetUrl,
     },
     {
       field: 'language',
@@ -57,7 +64,7 @@ const ManageBannersList = () => {
       gridOptions={{
         rowData: rowData2,
         columnDefs: columnDefs2,
-        rowHeight: 100,
+        rowHeight: rowHeight,
       }}
     />
   );
