@@ -258,6 +258,8 @@ type featuresType = {
     configuration_code: configurationType;
     portal_code: portalType;
     shouldDisplay: boolean;
+    relativeUrl?: string;
+    url?: string;
   };
 };
 

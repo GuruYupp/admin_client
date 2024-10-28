@@ -60,7 +60,7 @@ const ManageBanners = () => {
   }, [dispatch]);
 
   return (
-    <div style={{ paddingBottom: '30px' }}>
+    <div>
       <ManageBannersForm>
         <form>
           <label htmlFor="content partner">
