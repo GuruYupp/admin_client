@@ -67,6 +67,8 @@ export const getAllFeatures = () => {
       configuration_code: 'subscribers_management',
       portal_code: 'subscriber',
       shouldDisplay: false,
+      relativeUrl: '/search-user',
+      url: '/subscribers/search-user',
     },
     webuser_creation: {
       code: 'webuser_creation',
@@ -74,6 +76,8 @@ export const getAllFeatures = () => {
       configuration_code: 'subscribers_management',
       portal_code: 'subscriber',
       shouldDisplay: false,
+      relativeUrl: '/create-web-user',
+      url: '/subscribers/create-web-user',
     },
     content_feedback: {
       code: 'content_feedback',
@@ -81,6 +85,8 @@ export const getAllFeatures = () => {
       configuration_code: 'subscribers_management',
       portal_code: 'subscriber',
       shouldDisplay: false,
+      relativeUrl: '/feed-back-list',
+      url: '/subscribers/feed-back-list',
     },
     package_activation: {
       code: 'package_activation',
@@ -88,6 +94,8 @@ export const getAllFeatures = () => {
       configuration_code: 'subscribers_management',
       portal_code: 'subscriber',
       shouldDisplay: false,
+      relativeUrl: '/package-activation',
+      url: '/subscribers/package-activation',
     },
     paytm_manage: {
       code: 'paytm_manage',
@@ -95,6 +103,8 @@ export const getAllFeatures = () => {
       configuration_code: 'subscribers_management',
       portal_code: 'subscriber',
       shouldDisplay: false,
+      relativeUrl: '/paytm_manage',
+      url: '/subscribers/paytm_manage',
     },
     bulk_email: {
       code: 'bulk_email',
@@ -102,6 +112,8 @@ export const getAllFeatures = () => {
       configuration_code: 'subscribers_management',
       portal_code: 'subscriber',
       shouldDisplay: false,
+      relativeUrl: '/bulkemail',
+      url: '/subscribers/bulkemail',
     },
     migrate_user: {
       code: 'migrate_user',
@@ -109,6 +121,8 @@ export const getAllFeatures = () => {
       configuration_code: 'subscribers_management',
       portal_code: 'subscriber',
       shouldDisplay: false,
+      relativeUrl: '/migrate-user',
+      url: '/subscribers/migrate-user',
     },
     reporters_manage: {
       code: 'reporters_manage',
@@ -116,6 +130,8 @@ export const getAllFeatures = () => {
       configuration_code: 'reporters_management',
       portal_code: 'subscriber',
       shouldDisplay: false,
+      relativeUrl: '/reportermanage',
+      url: '/reporter-management/reportermanage',
     },
     chat_monitoring: {
       code: 'chat_monitoring',
@@ -123,6 +139,8 @@ export const getAllFeatures = () => {
       configuration_code: 'chat_management',
       portal_code: 'subscriber',
       shouldDisplay: false,
+      relativeUrl: '/reportermanage',
+      url: '/reporter-management/reportermanage',
     },
     chat_history: {
       code: 'chat_history',
@@ -130,6 +148,8 @@ export const getAllFeatures = () => {
       configuration_code: 'chat_management',
       portal_code: 'subscriber',
       shouldDisplay: false,
+      relativeUrl: '/chathistory',
+      url: '/chat/chathistory',
     },
     blocked_users: {
       code: 'blocked_users',
@@ -137,6 +157,8 @@ export const getAllFeatures = () => {
       configuration_code: 'chat_management',
       portal_code: 'subscriber',
       shouldDisplay: false,
+      relativeUrl: '/blockedUsers',
+      url: '/chat/blockedUsers',
     },
     chat_users: {
       code: 'chat_users',
@@ -151,6 +173,8 @@ export const getAllFeatures = () => {
       configuration_code: 'qr_code_generation',
       portal_code: 'subscriber',
       shouldDisplay: false,
+      relativeUrl: '/qrcode',
+      url: '/qrcode',
     },
     banners: {
       code: 'banners',
@@ -158,6 +182,8 @@ export const getAllFeatures = () => {
       configuration_code: 'platform_operations',
       portal_code: 'content',
       shouldDisplay: false,
+      relativeUrl: '/banners',
+      url: '/platform-config/banners',
     },
     tv_genres: {
       code: 'tv_genres',
@@ -921,6 +947,8 @@ export const getAllFeatures = () => {
       configuration_code: 'misc_operations',
       text: 'TV Guide Banners',
       shouldDisplay: false,
+      relativeUrl: '/misc-operations',
+      url: '/misc-operations/tv_guide_banners',
     },
     misc_tables: {
       code: 'misc_tables',

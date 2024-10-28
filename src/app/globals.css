@@ -13,6 +13,7 @@
   --ag-wrapper-border-radius: 0px !important;
   overflow-x: auto; /* Enables horizontal scrolling */
   width: 100%; /* Adjust as needed */
+  --ag-font-size: 0.95rem;
 }
 
 body {

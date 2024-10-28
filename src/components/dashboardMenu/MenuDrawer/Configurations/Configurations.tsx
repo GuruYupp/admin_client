@@ -1,26 +1,30 @@
 import { Box } from '@mui/material';
 import Feature from './Features/Features';
 import { FC, useState } from 'react';
+import { useAppSelector } from '@/libs/redux/hooks';
+import { selectActiveConfigurations } from '@/libs/redux/selectors';
 
-const Configurations:FC = () => {
+const Configurations: FC = () => {
   const [activePanelIndex, setActivePanelIndex] = useState<number>(-1);
 
+  const configurations = useAppSelector(selectActiveConfigurations);
   const handlePanelClick = (index: number) => {
-    if(activePanelIndex === index){
+    if (activePanelIndex === index) {
       setActivePanelIndex(-1);
-    }else{
+    } else {
       setActivePanelIndex(index);
     }
   };
 
   return (
     <Box component="nav" aria-labelledby="nested-list-subheader">
-      {[1, 2, 3, 4, 5].map((_, index) => (
+      {configurations.map((configuration, index) => (
         <Feature
           open={activePanelIndex === index}
           handleClick={handlePanelClick}
           key={index}
           panelIndex={index}
+          configuration={configuration}
         />
       ))}
     </Box>

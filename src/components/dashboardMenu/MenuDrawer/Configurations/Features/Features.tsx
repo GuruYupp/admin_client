@@ -6,24 +6,44 @@ import StyledFeatureButton from './FeatureStyledComponents/StyledFeatureButton.s
 import StyledFeatureList from './FeatureStyledComponents/StyledFeatureList.styles';
 import { FeaturesPropsInterface } from '@/components/dashboardMenu/dashboardmenu.types';
 import Link from 'next/link';
+import { useAppSelector } from '@/libs/redux/hooks';
+import { selectFeatures } from '@/libs/redux/selectors';
 
 const Features: FC<FeaturesPropsInterface> = (props) => {
-  const { open, handleClick, panelIndex } = props;
+  const { open, handleClick, panelIndex, configuration } = props;
+  const allFeatures = useAppSelector(selectFeatures);
+  const Features = allFeatures.filter(
+    (feature) => feature.configuration_code === configuration.code,
+  );
   return (
     <StyledFeatureList component="nav" aria-labelledby="nested-list-subheader">
       <StyledFeatureButton onClick={() => handleClick(panelIndex)}>
-        <StyledFeatureText primary="Platform Configurations" />
-        {open ? <IoMdArrowDropdown /> : <IoMdArrowDropup />}
+        <StyledFeatureText primary={configuration.text} />
+        {Features.length > 0 ? (
+          open ? (
+            <IoMdArrowDropdown />
+          ) : (
+            <IoMdArrowDropup />
+          )
+        ) : undefined}
       </StyledFeatureButton>
-      <Collapse in={open} timeout="auto" unmountOnExit>
-        <StyledFeatureList component="div" disablePadding>
-          <StyledFeatureButton sx={{ pl: 4 }} custom-isSubMenuItem>
-            <Link href={`/platform-config/banners`} shallow>
-              <StyledFeatureText primary="Starred" />
-            </Link>
-          </StyledFeatureButton>
-        </StyledFeatureList>
-      </Collapse>
+
+      {Features.length > 0 && (
+        <Collapse in={open} timeout="auto" unmountOnExit>
+          <StyledFeatureList component="div" disablePadding>
+            {Features.map((feature, index) => (
+              <StyledFeatureButton
+                sx={{ pl: 4 }}
+                custom-isSubMenuItem
+                key={index}>
+                <Link href={`/platform-config/banners`} shallow>
+                  <StyledFeatureText primary={feature.text} />
+                </Link>
+              </StyledFeatureButton>
+            ))}
+          </StyledFeatureList>
+        </Collapse>
+      )}
     </StyledFeatureList>
   );
 };

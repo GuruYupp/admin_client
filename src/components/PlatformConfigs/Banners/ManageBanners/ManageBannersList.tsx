@@ -8,12 +8,13 @@ import React, { useEffect, useState } from 'react';
 import ContentPartner from './cells/ContentPartner';
 import BannerImage from './cells/BannerImage';
 import TargetUrl from './cells/TargetUrl';
+import Languages from './cells/Languages';
 // import styles from './ManageBannersList.module.scss'
 // Create new GridExample component
 const ManageBannersList = () => {
   const Banners = useAppSelector(selectManageBanners);
   const rowHeight: number = 100;
-// Create new GridExample component
+  // Create new GridExample component
   const columnDefs2: ColDef[] = [
     {
       field: 'id',
@@ -46,7 +47,9 @@ const ManageBannersList = () => {
     {
       field: 'language',
       headerName: 'Languages',
-      cellStyle: { textAlign: 'left', lineHeight: '100px' },
+      wrapText: true,
+      autoHeight: true,
+      cellRenderer: Languages,
     },
     { field: 'actions', cellStyle: { textAlign: 'left', lineHeight: '100px' } },
   ];

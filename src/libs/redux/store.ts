@@ -2,7 +2,6 @@ import { configureStore } from '@reduxjs/toolkit';
 import authSlice from './features/auth/authSlice';
 import { adminApis } from '@/libs/redux/apis/adminApis';
 import constsSlice from './features/constants/constsSlice';
-import portalsSlice from './features/portals/portalsSlice';
 import { platformConfigadminApis } from './apis/platformConfigadminApis';
 import ManageBannersSlice from './features/paltformConfigs/ManageBannersSlice';
 import CommonConfigsSlice from './features/commonConfigs/CommonConfigsSlice';
@@ -12,7 +11,6 @@ export const makeStore = () => {
     reducer: {
       authState: authSlice,
       constsants: constsSlice,
-      portals: portalsSlice,
       platformConfigManageBanners: ManageBannersSlice,
       commonConfigs: CommonConfigsSlice,
       [adminApis.reducerPath]: adminApis.reducer,

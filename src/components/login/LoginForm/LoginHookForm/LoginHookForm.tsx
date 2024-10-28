@@ -24,9 +24,9 @@ import { useRouter } from 'next/navigation';
 import {
   UserLoginData,
   loginVerify,
+  setConfigurations,
 } from '@/libs/redux/features/auth/authSlice';
 import { saveToLocalStorage } from '@/services/utils';
-import { setPortals } from '@/libs/redux/features/portals/portalsSlice';
 import { fetchResourceProfiles } from '@/libs/redux/features/commonConfigs/CommonConfigsSlice';
 
 const LoginHookForm = () => {
@@ -64,7 +64,7 @@ const LoginHookForm = () => {
         );
         setAppConfigsAfterRender();
         dispatch(loginVerify());
-        dispatch(setPortals());
+        dispatch(setConfigurations());
         dispatch(fetchResourceProfiles());
         router.replace('/');
       }
