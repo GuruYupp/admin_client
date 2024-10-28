@@ -13,7 +13,7 @@ import TargetUrl from './cells/TargetUrl';
 const ManageBannersList = () => {
   const Banners = useAppSelector(selectManageBanners);
   const rowHeight: number = 100;
-
+// Create new GridExample component
   const columnDefs2: ColDef[] = [
     {
       field: 'id',
@@ -39,8 +39,6 @@ const ManageBannersList = () => {
     {
       field: 'targetPath',
       headerName: 'Target Url',
-      cellStyle: { textAlign: 'left', lineHeight: '1', height: '100%' },
-      // cellClass:styles.targeturl_block,
       wrapText: true,
       autoHeight: true,
       cellRenderer: TargetUrl,
