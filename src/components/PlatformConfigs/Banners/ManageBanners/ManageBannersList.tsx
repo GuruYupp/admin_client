@@ -9,6 +9,7 @@ import ContentPartner from './cells/ContentPartner';
 import BannerImage from './cells/BannerImage';
 import TargetUrl from './cells/TargetUrl';
 import Languages from './cells/Languages';
+import ManageBannerActions from './cells/ManageBannerActions';
 // import styles from './ManageBannersList.module.scss'
 // Create new GridExample component
 const ManageBannersList = () => {
@@ -51,7 +52,7 @@ const ManageBannersList = () => {
       autoHeight: true,
       cellRenderer: Languages,
     },
-    { field: 'actions', cellStyle: { textAlign: 'left', lineHeight: '100px' } },
+    { field: 'actions', cellRenderer: ManageBannerActions },
   ];
 
   const [rowData2, setRowData2] = useState<BannerInterface[]>(Banners);
@@ -66,6 +67,9 @@ const ManageBannersList = () => {
         rowData: rowData2,
         columnDefs: columnDefs2,
         rowHeight: rowHeight,
+        pagination: true,
+        paginationPageSize: 50,
+        paginationPageSizeSelector: [10, 20, 50, 100, 200],
       }}
     />
   );

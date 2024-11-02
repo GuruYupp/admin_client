@@ -1,7 +1,7 @@
 import { styled } from '@mui/material';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
-import { useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '@/libs/redux/hooks';
 import {
   selectNetworkList,
@@ -9,14 +9,18 @@ import {
   selectisSuperUser,
 } from '@/libs/redux/selectors';
 import { fetchNetworks } from '@/libs/redux/features/commonConfigs/CommonConfigsSlice';
+interface ManageBannersSelectPropsInterface {
+  handleSelectNetworkId: (networkId: string) => void;
+}
 const StyledSelect = styled(Select)(() => ({
   Width: '100%',
   display: 'block',
   height: '35px',
 })) as unknown as typeof Select;
 
-const ManageBannersSelect = () => {
-  const [age, setAge] = useState(' ');
+const ManageBannersSelect: FC<ManageBannersSelectPropsInterface> = (props) => {
+  const { handleSelectNetworkId } = props;
+  const [network, setNetwork] = useState(' ');
 
   const dispatch = useAppDispatch();
 
@@ -25,7 +29,8 @@ const ManageBannersSelect = () => {
   }, [dispatch]);
 
   const handleChange = (event: SelectChangeEvent) => {
-    setAge(event.target.value as string);
+    setNetwork(event.target.value as string);
+    handleSelectNetworkId(event.target.value);
   };
 
   const isMasterUser = useAppSelector(selectisMasterUser);
@@ -36,13 +41,13 @@ const ManageBannersSelect = () => {
     <StyledSelect
       labelId="demo-simple-select-label"
       id="demo-simple-select"
-      value={age}
+      value={network}
       onChange={handleChange}
       size="small">
       {(isMasterUser || isSuperUser) && <MenuItem value={' '}>All</MenuItem>}
       {(isMasterUser || isSuperUser) && <MenuItem value={'0'}>Global</MenuItem>}
       {networkList.map((network) => (
-        <MenuItem value={network.code} key={network.code}>
+        <MenuItem value={network.id.toString()} key={network.code}>
           {network.name}
         </MenuItem>
       ))}

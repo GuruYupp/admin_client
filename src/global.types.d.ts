@@ -51,11 +51,16 @@ export interface adminLoginUserFeature {
   code: string;
 }
 
+export interface adminLoginUserPermissionsInterface {
+  name: string;
+  code: string;
+}
+
 export interface adminLoginUserDetailsInterface {
   emailId: string;
   portals: adminLoginUserPortal[]; // Specify a more detailed type if known
   features: adminLoginUserFeature[]; // Specify a more detailed type if known
-  permissions: any[]; // Specify a more detailed type if known
+  permissions: adminLoginUserPermissionsInterface[]; // Specify a more detailed type if known
   roles: adminLoginUserRole[];
   status: boolean;
   sessionId: string;

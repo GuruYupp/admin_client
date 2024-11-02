@@ -6,15 +6,27 @@ interface initialStateInterface {
   banners: BannerInterface[];
 }
 
-export const fetchBanners = createAsyncThunk(
+export const fetchBanners = createAsyncThunk<
+  responseInterface,
+  | {
+      params?: searchBannerparamsInterface;
+      body?: searchBannerbodyInterface;
+    }
+  | undefined
+>(
   'platformConfig/fetchBanners',
-  async (_args, thunkAPI) => {
+  async (
+    args = { params: { page: 0, pagesize: 50 }, body: { networkId: '' } },
+    thunkAPI,
+  ) => {
     const { dispatch } = thunkAPI;
+    const { params = { page: 0, pagesize: 50 }, body = { networkId: '' } } =
+      args;
     // Call the RTK Query endpoint directly
     const result = await dispatch(
       platformConfigadminApis.endpoints.searchBanner.initiate({
-        params: { page: 0, pagesize: 50 },
-        body: { networkId: '' },
+        params,
+        body,
       }),
     );
     return result.data as responseInterface;

@@ -1,7 +1,7 @@
 import AppTextField from '@/components/shared/AppTextField/AppTextField';
 import { styled } from '@mui/material';
 import Button from '@mui/material/Button';
-import React, { useEffect } from 'react';
+import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { useAppDispatch } from '@/libs/redux/hooks';
 import { fetchBanners } from '@/libs/redux/features/paltformConfigs/ManageBannersSlice';
 import ManageBannersSelect from './ManageBannersSelect';
@@ -54,10 +54,44 @@ const ManageBannersSearchButton = styled(Button)(({}) => ({
 
 const ManageBanners = () => {
   const dispatch = useAppDispatch();
+  const [networkId, setNetworkId] = useState<string>('');
+  const [bannerId, setBannerId] = useState<string>('');
+  const [bannerTitle, setBannerTitle] = useState<string>('');
 
   useEffect(() => {
     dispatch(fetchBanners());
   }, [dispatch]);
+
+  const handleSelectNetworkId = useCallback((networkId: string) => {
+    setNetworkId(networkId);
+  }, []);
+
+  const handleChangeBannerId = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      if (/^\d+$/.test(e.target.value) || e.target.value === '')
+        setBannerId(e.target.value);
+    },
+    [],
+  );
+
+  const handleChangeBannerTitle = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      setBannerTitle(e.target.value);
+    },
+    [],
+  );
+
+  const handleSearchBanners = () => {
+    dispatch(
+      fetchBanners({
+        body: {
+          networkId,
+          ...(bannerId && { id: bannerId }),
+          ...(bannerTitle && { name: bannerTitle }),
+        },
+      }),
+    );
+  };
 
   return (
     <div>
@@ -66,20 +100,35 @@ const ManageBanners = () => {
           <label htmlFor="content partner">
             {' '}
             <strong>Contet Partner</strong>
-            <ManageBannersSelect />
+            <ManageBannersSelect
+              handleSelectNetworkId={handleSelectNetworkId}
+            />
           </label>
           <label htmlFor="Banner Id">
             {' '}
             <strong>Banner Id</strong>
-            <ManageBannersTextField size="small" placeholder="Banner Id" />
+            <ManageBannersTextField
+              size="small"
+              placeholder="Banner Id"
+              value={bannerId}
+              onChange={handleChangeBannerId}
+            />
           </label>
           <label htmlFor="Banner Title">
             {' '}
             <strong>Banner Title</strong>
-            <ManageBannersTextField size="small" placeholder="Banner Title" />
+            <ManageBannersTextField
+              size="small"
+              placeholder="Banner Title"
+              value={bannerTitle}
+              onChange={handleChangeBannerTitle}
+            />
           </label>
           {/* <label htmlFor="Banner Search Button"> */}
-          <ManageBannersSearchButton size="small" variant="contained">
+          <ManageBannersSearchButton
+            size="small"
+            variant="contained"
+            onClick={handleSearchBanners}>
             Search
           </ManageBannersSearchButton>
           {/* </label> */}

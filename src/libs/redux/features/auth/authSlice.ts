@@ -1,5 +1,6 @@
 import {
   adminLoginUserDetailsInterface,
+  adminLoginUserPermissionsInterface,
   configurationType,
   configurationsType,
   featureType,
@@ -24,6 +25,7 @@ interface intialLoginState {
   isSuperuser: boolean;
   features: featuresType[featureType][];
   configurations: configurationType[];
+  permissions: adminLoginUserPermissionsInterface[];
   activePortal: portalsType[portalType];
   activeConfigurations: configurationsType[configurationType][];
   // activeFeatures: featuresType[featureType][];
@@ -37,6 +39,7 @@ const initialState: intialLoginState = {
   isSuperuser: false,
   features: [],
   configurations: [],
+  permissions: [],
   activePortal: {
     code: 'content',
     text: 'Content Configurations',
@@ -53,9 +56,12 @@ const authSlice = createSlice({
     loginVerify: (state) => {
       const isLoggedin = readFromLocalStorage('isLoggedin');
       if (isLoggedin === 'true') {
-        const userDetails = readFromLocalStorage('userDetails');
-        if (userDetails) {
-          state.userDetails = JSON.parse(userDetails);
+        const userDetailsStr = readFromLocalStorage('userDetails');
+        if (userDetailsStr) {
+          const userDetails = JSON.parse(
+            userDetailsStr,
+          ) as unknown as adminLoginUserDetailsInterface;
+          state.userDetails = userDetails;
           state.isLoggedin = true;
           state.userDetails?.roles.map((role) => {
             if (role.code === 'master_user') state.isMasteruser = true;
@@ -88,6 +94,10 @@ const authSlice = createSlice({
             });
           }
 
+          state.permissions = [];
+          userDetails?.permissions.map((permission) => {
+            state.permissions.push(permission);
+          });
           // state.activeFeatures = state.features.filter(feature=>feature.portal_code === state.activePortal.code);
         }
       }

@@ -3,11 +3,6 @@ import dynamicBaseQuery from './dynamicBaseQuery';
 import { getSessionId, getTenantCode } from '@/services/utils';
 import { responseInterface } from '@/global.types';
 
-interface searchBannerbodyInterface {
-  id?: string;
-  name?: string;
-  networkId: string;
-}
 export const platformConfigadminApis = createApi({
   reducerPath: 'platformconfigapis',
   baseQuery: dynamicBaseQuery,
@@ -15,7 +10,7 @@ export const platformConfigadminApis = createApi({
     searchBanner: builder.mutation<
       responseInterface,
       {
-        params: { page: number; pagesize: number };
+        params: searchBannerparamsInterface;
         body: searchBannerbodyInterface;
       }
     >({

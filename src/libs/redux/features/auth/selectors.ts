@@ -1,3 +1,4 @@
+import { adminLoginUserPermissionsInterface } from '@/global.types';
 import { RootState } from '../../store';
 
 export const selectisLoggedIn = (state: RootState) =>
@@ -14,3 +15,10 @@ export const selectActivePortal = (state: RootState) =>
 export const selectActiveConfigurations = (state: RootState) =>
   state.authState.activeConfigurations;
 export const selectFeatures = (state: RootState) => state.authState.features;
+
+export const selecthasPermission = (
+  state: RootState,
+  permissionCode: adminLoginUserPermissionsInterface['code'],
+) =>
+  state.authState.isSuperuser ||
+  state.authState.permissions.some((pmsn) => pmsn.code === permissionCode);
