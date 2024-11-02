@@ -5,6 +5,7 @@ import constsSlice from './features/constants/constsSlice';
 import { platformConfigadminApis } from './apis/platformConfigadminApis';
 import ManageBannersSlice from './features/paltformConfigs/ManageBannersSlice';
 import CommonConfigsSlice from './features/commonConfigs/CommonConfigsSlice';
+import LiveTvGenresSlice from './features/paltformConfigs/LiveTvGenresSlice';
 
 export const makeStore = () => {
   const Store = configureStore({
@@ -12,6 +13,7 @@ export const makeStore = () => {
       authState: authSlice,
       constsants: constsSlice,
       platformConfigManageBanners: ManageBannersSlice,
+      platformconfigLiveTvGenres: LiveTvGenresSlice,
       commonConfigs: CommonConfigsSlice,
       [adminApis.reducerPath]: adminApis.reducer,
       [platformConfigadminApis.reducerPath]: platformConfigadminApis.reducer,

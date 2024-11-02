@@ -24,5 +24,15 @@ export const platformConfigadminApis = createApi({
         body,
       }),
     }),
+    listGenre: builder.query<responseInterface, listGenreparamsInterface>({
+      query: ({ page = 0, pagesize = 50 }) => ({
+        headers: {
+          'tenant-code': getTenantCode(),
+          'session-id': getSessionId(),
+        },
+        url: `/service/admin/v1/list/genre?page=${page}&pagesize=${pagesize}`,
+        method: 'GET',
+      }),
+    }),
   }),
 });

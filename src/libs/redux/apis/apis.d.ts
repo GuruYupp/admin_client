@@ -8,3 +8,8 @@ interface searchBannerparamsInterface {
   page: number;
   pagesize: number;
 }
+
+interface listGenreparamsInterface {
+  page: number;
+  pagesize: number;
+}
