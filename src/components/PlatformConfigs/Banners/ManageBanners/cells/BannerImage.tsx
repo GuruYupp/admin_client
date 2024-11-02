@@ -1,6 +1,7 @@
 import { BannerInterface } from '@/adminTypes/ManageBannersTypes';
 import { getImage } from '@/services/utils';
-import { Container, styled } from '@mui/material';
+import Container from '@mui/material/Container';
+import { styled } from '@mui/material';
 import { ICellRendererParams } from 'ag-grid-community';
 import React from 'react';
 

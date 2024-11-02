@@ -6,5 +6,5 @@ module.exports = {
     "src/**/*.ts": ["prettier --write", "eslint --max-warnings 0  src/**/*.ts"],
     "src/**/*.ts": ["prettier --write", "eslint --max-warnings 0  src/**/*.styles.ts"],
     "src/**/*.scss": ["prettier --write"],
-    "src/**/*.css": ["prettier --write"]
+    "src/**/*.css": ["prettier --write"],
   };

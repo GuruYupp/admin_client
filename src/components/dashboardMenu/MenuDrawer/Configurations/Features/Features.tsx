@@ -36,7 +36,7 @@ const Features: FC<FeaturesPropsInterface> = (props) => {
                 sx={{ pl: 4 }}
                 custom-isSubMenuItem
                 key={index}>
-                <Link href={`/platform-config/banners`} shallow>
+                <Link href={feature?.url || '#'} shallow>
                   <StyledFeatureText primary={feature.text} />
                 </Link>
               </StyledFeatureButton>

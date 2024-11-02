@@ -191,6 +191,8 @@ export const getAllFeatures = () => {
       configuration_code: 'platform_operations',
       portal_code: 'content',
       shouldDisplay: false,
+      relativeUrl: '/live-tv-genres',
+      url: '/platform-config/live-tv-genres',
     },
     categories: {
       code: 'categories',
