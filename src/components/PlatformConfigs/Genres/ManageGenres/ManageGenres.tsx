@@ -23,8 +23,6 @@ export const ManageGenres = () => {
     setRowData(LiveTvGenres);
   }, [LiveTvGenres]);
 
-  console.log(rowData);
-
   const columnDefs: ColDef[] = [
     {
       field: 'id',
@@ -49,6 +47,7 @@ export const ManageGenres = () => {
   useEffect(() => {
     dispatch(fetchLivetvGeners());
   }, [dispatch]);
+
   return (
     <GenresListContainer>
       <AdminGenricTable<LiveTvGenresInterface>
@@ -57,7 +56,7 @@ export const ManageGenres = () => {
           columnDefs: columnDefs,
           // rowHeight: rowHeight,
           pagination: true,
-          paginationPageSize: 25,
+          paginationPageSize: 20,
           paginationPageSizeSelector: [10, 20, 50, 100, 200],
           autoSizeStrategy: {
             type: 'fitGridWidth',

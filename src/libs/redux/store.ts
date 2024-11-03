@@ -6,6 +6,8 @@ import { platformConfigadminApis } from './apis/platformConfigadminApis';
 import ManageBannersSlice from './features/paltformConfigs/ManageBannersSlice';
 import CommonConfigsSlice from './features/commonConfigs/CommonConfigsSlice';
 import LiveTvGenresSlice from './features/paltformConfigs/LiveTvGenresSlice';
+import VodCategoriesSlice from './features/paltformConfigs/VodCategoriesSlice';
+import GeoRulesSlice from './features/paltformConfigs/GeoRulesSlice';
 
 export const makeStore = () => {
   const Store = configureStore({
@@ -14,6 +16,8 @@ export const makeStore = () => {
       constsants: constsSlice,
       platformConfigManageBanners: ManageBannersSlice,
       platformconfigLiveTvGenres: LiveTvGenresSlice,
+      platformconfigVodCategories: VodCategoriesSlice,
+      platformconfigGeoRules: GeoRulesSlice,
       commonConfigs: CommonConfigsSlice,
       [adminApis.reducerPath]: adminApis.reducer,
       [platformConfigadminApis.reducerPath]: platformConfigadminApis.reducer,

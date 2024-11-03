@@ -200,6 +200,8 @@ export const getAllFeatures = () => {
       configuration_code: 'platform_operations',
       portal_code: 'content',
       shouldDisplay: false,
+      relativeUrl: '/categories',
+      url: '/platform-config/categories',
     },
     geo_rule: {
       code: 'geo_rule',
@@ -207,6 +209,8 @@ export const getAllFeatures = () => {
       configuration_code: 'platform_operations',
       portal_code: 'content',
       shouldDisplay: false,
+      relativeUrl: '/georule',
+      url: '/platform-config/georule',
     },
     languages: {
       code: 'languages',

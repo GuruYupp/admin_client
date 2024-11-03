@@ -13,3 +13,13 @@ interface listGenreparamsInterface {
   page: number;
   pagesize: number;
 }
+
+interface VodCategoriesparamsInterface {
+  page: number;
+  pagesize: number;
+}
+
+export interface GeoRuleparamsInterface {
+  page: number;
+  pagesize: number;
+}
