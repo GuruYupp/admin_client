@@ -5,3 +5,9 @@ export const selectManageBanners = (state: RootState) =>
 
 export const selectLiveTvGenres = (state: RootState) =>
   state.platformconfigLiveTvGenres.genres;
+
+export const selectVodCategories = (state: RootState) =>
+  state.platformconfigVodCategories.categories;
+
+export const selectGeoRules = (state: RootState) =>
+  state.platformconfigGeoRules.georules;
