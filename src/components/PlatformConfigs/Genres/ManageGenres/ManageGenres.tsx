@@ -48,6 +48,8 @@ export const ManageGenres = () => {
     dispatch(fetchLivetvGeners());
   }, [dispatch]);
 
+
+
   return (
     <GenresListContainer>
       <AdminGenricTable<LiveTvGenresInterface>

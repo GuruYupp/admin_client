@@ -9,6 +9,7 @@ import LiveTvGenresSlice from './features/paltformConfigs/LiveTvGenresSlice';
 import VodCategoriesSlice from './features/paltformConfigs/VodCategoriesSlice';
 import GeoRulesSlice from './features/paltformConfigs/GeoRulesSlice';
 
+
 export const makeStore = () => {
   const Store = configureStore({
     reducer: {
