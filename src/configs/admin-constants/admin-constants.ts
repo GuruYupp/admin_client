@@ -1,6 +1,7 @@
 import { validClientType } from '@/global.types';
 import herogotvConstants from './herogotv-constants';
 import timesplayConstants from './timesplay-constants';
+import dishtvConstants from './dishtv-constants';
 import defaultConstants from './yvs-constants';
 const adminConstants = {
   getAsyncConstants: async (client?: validClientType) => {
@@ -12,6 +13,9 @@ const adminConstants = {
       case 'timesplay':
         const timesplayConstants = await import('./timesplay-constants');
         return timesplayConstants.default;
+      case 'dishtv':
+        const dishtvConstants = await import('./dishtv-constants');
+        return dishtvConstants.default;
       default:
         const defaultConstants = await import('./yvs-constants');
         return defaultConstants.default;
@@ -24,6 +28,8 @@ const adminConstants = {
         return herogotvConstants;
       case 'timesplay':
         return timesplayConstants;
+      case 'dishtv':
+        return dishtvConstants;
       default:
         return defaultConstants;
     }

@@ -2,11 +2,11 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 import './globals.css';
-
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import theme from '@/theme';
 import dynamic from 'next/dynamic';
 import StoreProvider from './StoreProvider';
+import AdminProgessBar from '@/components/shared/AdminProgressBar/AdminProgessBar';
 const AppLayout = dynamic(() => import('@/layouts/AppLayout'), { ssr: false });
 const AdminRootLayout = dynamic(() => import('@/layouts/RootLayout'), {
   ssr: false,
@@ -39,6 +39,7 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <AdminProgessBar />
         <StoreProvider>
           <AppRouterCacheProvider>
             <ThemeProvider theme={theme}>

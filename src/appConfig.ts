@@ -1,70 +1,85 @@
 import herogotvConfigs from '@/configs/admin-clients/herogotv/Configs';
 import timesplayConfigs from '@/configs/admin-clients/timesplay/Configs';
-import yvsConfigs from '@/configs/admin-clients/yvs/Configs'
-import { environmentTypes } from "./configs/configs.types";
+import mytvConfigs from '@/configs/admin-clients/mytv/Configs';
+import dishtvConfigs from '@/configs/admin-clients/dishtv/Configs';
+import yvsConfigs from '@/configs/admin-clients/yvs/Configs';
+import { environmentTypes } from './configs/configs.types';
 import { AppConfigsObserver, AppConfigsSubject } from './global.types';
 import { readFromLocalStorage } from './services/utils';
 
+export class AppConfigs implements AppConfigsSubject {
+  private config: { [key: string]: any } = {};
+  private appConfigObservers: AppConfigsObserver[] = [];
 
+  constructor() {
+    const configs = this.getClientConfigs(
+      process.env.NEXT_PUBLIC_TENANT,
+      process.env.NEXT_PUBLIC_ENVIRONMENT,
+    );
+    this.config = configs;
+  }
 
-export class AppConfigs implements AppConfigsSubject{
-    private config:{ [key: string]: any }={};
-    private appConfigObservers:AppConfigsObserver[]=[];
+  register(observer: AppConfigsObserver) {
+    this.appConfigObservers.push(observer);
+    observer.update(this.config);
+  }
 
-    constructor(){
-        const configs = this.getClientConfigs(process.env.NEXT_PUBLIC_TENANT,process.env.NEXT_PUBLIC_ENVIRONMENT);
-        this.config = configs;
+  unregister(observer: AppConfigsObserver) {
+    this.appConfigObservers = this.appConfigObservers.filter(
+      (obsr) => obsr !== observer,
+    );
+  }
+
+  notifyObservers() {
+    this.appConfigObservers.forEach((observer) => {
+      observer.update(this.config);
+    });
+  }
+
+  updateConfigs(client: string) {
+    const newConfigs = this.getClientConfigs(
+      client,
+      process.env.NEXT_PUBLIC_ENVIRONMENT,
+    );
+    this.config = newConfigs;
+    this.notifyObservers();
+  }
+
+  get Config() {
+    return this.config;
+  }
+
+  private getClientConfigs(
+    tenant: string | undefined,
+    environment: environmentTypes,
+  ) {
+    let clientConfigs;
+    switch (tenant) {
+      case 'herogotv':
+        clientConfigs = herogotvConfigs.get(environment || 'beta');
+        break;
+      case 'timesplay':
+        clientConfigs = timesplayConfigs.get(environment || 'beta');
+        break;
+      case 'mytv':
+        clientConfigs = mytvConfigs.get(environment || 'beta');
+      case 'dishtv':
+        clientConfigs = dishtvConfigs.get(environment || 'beta');
+        break;
+      default:
+        clientConfigs = yvsConfigs.get(environment || 'beta');
     }
-
-    register(observer: AppConfigsObserver){
-       this.appConfigObservers.push(observer);
-       observer.update(this.config);
-    }
-
-    unregister(observer: AppConfigsObserver){
-        this.appConfigObservers = this.appConfigObservers.filter(obsr=>obsr !== observer)
-    };
-
-    notifyObservers(){
-        this.appConfigObservers.forEach((observer)=>{
-            observer.update(this.config)
-        })
-    }
-
-    updateConfigs(client:string){
-        const newConfigs = this.getClientConfigs(client,process.env.NEXT_PUBLIC_ENVIRONMENT);
-        this.config = newConfigs;
-        this.notifyObservers();
-    }
-
-    get Config(){
-        return this.config;
-    }
-
-    private getClientConfigs(tenant:string | undefined, environment:environmentTypes){
-        let clientConfigs;
-        switch (tenant) {
-            case 'herogotv':
-                clientConfigs = herogotvConfigs.get(environment || "beta");
-              break;
-           case 'timesplay':
-            clientConfigs = timesplayConfigs.get(environment || "beta");
-              break;
-           default :
-           clientConfigs = yvsConfigs.get(environment || "beta");
-          }
-        return clientConfigs;
-    }
-
+    return clientConfigs;
+  }
 }
 
 const appConfigsInstance = new AppConfigs();
 
-export const setAppConfigsAfterRender = ()=>{
-    const tenant = readFromLocalStorage("tenant")
-    if(tenant){
-        appConfigsInstance.updateConfigs(tenant);
-    }
-}
+export const setAppConfigsAfterRender = () => {
+  const tenant = readFromLocalStorage('tenant');
+  if (tenant) {
+    appConfigsInstance.updateConfigs(tenant);
+  }
+};
 
-export {appConfigsInstance}
+export { appConfigsInstance };

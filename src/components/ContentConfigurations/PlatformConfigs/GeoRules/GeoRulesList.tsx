@@ -25,6 +25,7 @@ const GeoRulesList = () => {
     {
       field: 'name',
       cellStyle: { textAlign: 'left' },
+      editable: true,
     },
     {
       field: 'code',

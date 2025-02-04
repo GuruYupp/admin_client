@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { platformConfigadminApis } from '../../apis/platformConfigadminApis';
 import { responseInterface } from '@/global.types';
 import { LiveTvGenresInterface } from '@/adminTypes/LiveTvGenresTypes';
+import { listGenreparamsInterface } from '../../apis/apis';
 interface initialStateInterface {
   genres: LiveTvGenresInterface[];
 }

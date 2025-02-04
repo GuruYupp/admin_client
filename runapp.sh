@@ -9,7 +9,7 @@ if [ "$tenant" = "" ] && [ "$env" = "" ]; then
    exit 1  # Exit with a non-zero status indicating an error
 fi
 
-tenants=("herogotv" "master")
+tenants=("herogotv" "master" "mytv" "dishtv")
 environments=("beta" "prod")
 
 # Flag to track if value is tenant_found

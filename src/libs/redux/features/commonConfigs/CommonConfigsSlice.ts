@@ -53,7 +53,10 @@ export const fetchResourceProfiles = createAsyncThunk(
     } else {
       // Call the RTK Query endpoint directly
       const result = await dispatch(
-        adminApis.endpoints.getResourceProfiles.initiate({}),
+        adminApis.endpoints.getResourceProfiles.initiate(
+          {},
+          { forceRefetch: true },
+        ),
       );
       return result.data as responseInterface;
     }

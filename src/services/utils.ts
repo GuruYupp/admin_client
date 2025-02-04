@@ -21,7 +21,7 @@ export const getadminSyncConstants = (client?: validClientType) => {
 
 export const saveToLocalStorage = (key: string, value: string) => {
   try {
-    localStorage.setItem(key, value);
+    localStorage.setItem(`${key}-admin-v1`, value);
   } catch (err) {
     console.log('setting item in local storage error', err);
   }
@@ -29,7 +29,7 @@ export const saveToLocalStorage = (key: string, value: string) => {
 
 export const readFromLocalStorage = (key: string) => {
   try {
-    return localStorage.getItem(key);
+    return localStorage.getItem(`${key}-admin-v1`);
   } catch (err) {
     console.log('getting item in local storage error', err);
   }
@@ -218,6 +218,8 @@ export const getAllFeatures = () => {
       configuration_code: 'platform_operations',
       portal_code: 'content',
       shouldDisplay: false,
+      relativeUrl: '/languages',
+      url: '/platform-config/languages',
     },
     localization: {
       code: 'localization',
@@ -225,6 +227,7 @@ export const getAllFeatures = () => {
       configuration_code: 'platform_operations',
       portal_code: 'content',
       shouldDisplay: false,
+      url: '/platform-config/localization',
     },
     content_partner: {
       code: 'content_partner',
@@ -232,6 +235,7 @@ export const getAllFeatures = () => {
       configuration_code: 'content_management',
       portal_code: 'content',
       shouldDisplay: false,
+      url: '/content/content-partners',
     },
     content_channels: {
       code: 'content_channels',

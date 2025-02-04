@@ -1,4 +1,4 @@
-export type validClientType = 'herogotv' | 'timesplay' | 'yvs';
+export type validClientType = 'herogotv' | 'timesplay' | 'yvs' | 'dishtv';
 
 export interface AppConfigsObserver {
   update: {
@@ -26,7 +26,7 @@ export interface responseInterface {
     details: { [key: string]: string };
   };
   response?: {
-    data: unknown;
+    [key: string]: unknown;
     profiles?: unknown;
   };
 }

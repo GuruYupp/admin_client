@@ -2,7 +2,7 @@ const AGGREGATOR_ADMIN_BETA_URL = 'https://aggregrator-test-api.revlet.net/';
 const HEROGOTV_ADMIN_BETA_URL = 'https://herogotv-testapi.revlet.net/';
 const FIRSTSHOWS_ADMIN_BETA_URL = 'https://firstshows-testapi.revlet.net/';
 const REELDRAMA_ADMIN_BETA_URL = 'https://reeldrama-adminapi.revlet.net/';
-const DISHTV_ADMIN_BETA_URL = 'https://dishtv-testapi.revlet.net/';
+const DISHTV_ADMIN_BETA_URL = 'https://dishtv-uatapi2.revlet.net/';
 const MYTV_ADMIN_BETA_URL = 'https://mytv-test-api.revlet.net/';
 const YVS_ADMIN_BETA_URL = 'http://13.126.134.73:8080/';
 

@@ -23,3 +23,17 @@ export interface GeoRuleparamsInterface {
   page: number;
   pagesize: number;
 }
+
+export interface PlatformLanguagesparamsInterface {
+  page: number;
+  pagesize: number;
+}
+export interface DisplayLanguagesparamsInterface {
+  page: number;
+  pagesize: number;
+}
+
+export interface LocalizationparamsInterface {
+  page: number;
+  pagesize: number;
+}

@@ -1,3 +1,6 @@
-export default function PlatformConfigPages() {
-  return <h1>Hello Platfrom config pages</h1>;
+'use client';
+
+import ContentConfigs from '@/components/ContentConfigurations/content/ContentConfigs';
+export default function ContentConfigsPages() {
+  return <ContentConfigs />;
 }

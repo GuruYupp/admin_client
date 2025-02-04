@@ -8,6 +8,9 @@ import {
   searchBannerbodyInterface,
   listGenreparamsInterface,
   GeoRuleparamsInterface,
+  PlatformLanguagesparamsInterface,
+  DisplayLanguagesparamsInterface,
+  LocalizationparamsInterface,
 } from './apis';
 
 export const platformConfigadminApis = createApi({
@@ -61,6 +64,58 @@ export const platformConfigadminApis = createApi({
           'session-id': getSessionId(),
         },
         url: `/service/admin/v1/list/geo_rule?page=${page}&pagesize=${pagesize}`,
+        method: 'GET',
+      }),
+    }),
+    listPlatformLanguages: builder.query<
+      responseInterface,
+      PlatformLanguagesparamsInterface
+    >({
+      query: ({ page = 0, pagesize = 200 }) => ({
+        headers: {
+          'tenant-code': getTenantCode(),
+          'session-id': getSessionId(),
+        },
+        url: `/service/admin/v1/list/language?page=${page}&pagesize=${pagesize}`,
+        method: 'GET',
+      }),
+    }),
+    listDisplayLanguages: builder.query<
+      responseInterface,
+      DisplayLanguagesparamsInterface
+    >({
+      query: ({ page = 0, pagesize = 200 }) => ({
+        headers: {
+          'tenant-code': getTenantCode(),
+          'session-id': getSessionId(),
+        },
+        url: `/service/admin/v1/list/display_language??page=${page}&pagesize=${pagesize}`,
+        method: 'GET',
+      }),
+    }),
+    listLocalization: builder.query<
+      responseInterface,
+      LocalizationparamsInterface
+    >({
+      query: ({ page = 0, pagesize = 200 }) => ({
+        headers: {
+          'tenant-code': getTenantCode(),
+          'session-id': getSessionId(),
+        },
+        url: `/service/admin/v1/localization/resource/list?page=${page}&pagesize=${pagesize}`,
+        method: 'GET',
+      }),
+    }),
+    LocalizationDisplayLangs: builder.query<
+      responseInterface,
+      LocalizationparamsInterface
+    >({
+      query: ({ page = 0, pagesize = 200 }) => ({
+        headers: {
+          'tenant-code': getTenantCode(),
+          'session-id': getSessionId(),
+        },
+        url: `/service/admin/v1/list/display_language?page=${page}&pagesize=${pagesize}`,
         method: 'GET',
       }),
     }),

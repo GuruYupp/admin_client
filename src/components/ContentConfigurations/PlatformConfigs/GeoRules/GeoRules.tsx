@@ -18,7 +18,9 @@ const GeoRulesSearchBox = styled(Box)(() => ({
   display: 'flex',
 })) as typeof Box;
 
-const GeoRulesSearchTextBox = styled(AppTextField)(() => ({
+const GeoRulesSearchTextBox = styled(AppTextField, {
+  shouldForwardProp: (prop) => prop !== 'withClearProps',
+})(() => ({
   flex: 1,
   '.MuiInputBase-root': {
     height: '40px',

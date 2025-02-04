@@ -8,7 +8,8 @@ import CommonConfigsSlice from './features/commonConfigs/CommonConfigsSlice';
 import LiveTvGenresSlice from './features/paltformConfigs/LiveTvGenresSlice';
 import VodCategoriesSlice from './features/paltformConfigs/VodCategoriesSlice';
 import GeoRulesSlice from './features/paltformConfigs/GeoRulesSlice';
-
+import LanguagesSlice from './features/paltformConfigs/LanguagesSlice';
+import LocalizationSlice from './features/paltformConfigs/LocalizationSlice';
 
 export const makeStore = () => {
   const Store = configureStore({
@@ -19,6 +20,8 @@ export const makeStore = () => {
       platformconfigLiveTvGenres: LiveTvGenresSlice,
       platformconfigVodCategories: VodCategoriesSlice,
       platformconfigGeoRules: GeoRulesSlice,
+      platfromconfigLanguages: LanguagesSlice,
+      platfromconfigLocalization: LocalizationSlice,
       commonConfigs: CommonConfigsSlice,
       [adminApis.reducerPath]: adminApis.reducer,
       [platformConfigadminApis.reducerPath]: platformConfigadminApis.reducer,

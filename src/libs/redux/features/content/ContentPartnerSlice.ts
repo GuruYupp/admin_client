@@ -18,7 +18,7 @@ export const fetchBanners = createAsyncThunk<
     }
   | undefined
 >(
-  'platformConfig/fetchBanners',
+  'contentpartners/fetchnetwork',
   async (
     args = { params: { page: 0, pagesize: 50 }, body: { networkId: '' } },
     thunkAPI,
@@ -41,7 +41,7 @@ const initialState: initialStateInterface = {
   banners: [],
 };
 
-const manageBannersSlice = createSlice({
+const contentpartnersSlice = createSlice({
   name: 'manageBanners',
   initialState,
   reducers: {},
@@ -49,7 +49,7 @@ const manageBannersSlice = createSlice({
     builder.addCase(fetchBanners.fulfilled, (state, action) => {
       const { payload } = action;
       if (payload?.status === true && payload.response) {
-        state.banners = payload.response?.data as BannerInterface[];
+        // state.banners = payload.response?.data as BannerInterface[];
       }
     });
     builder.addCase(fetchBanners.rejected, (state, action) => {
@@ -58,4 +58,4 @@ const manageBannersSlice = createSlice({
   },
 });
 
-export default manageBannersSlice.reducer;
+export default contentpartnersSlice.reducer;
